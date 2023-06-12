@@ -1,0 +1,33 @@
+{
+  "name": "n-letter-wordle",
+  "version": "0.1.0",
+  "description": "A wordle clone, played in the command line, with words of any length.",
+  "main": "start.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node ./pre-install.js",
+    "uninstall": "node ./uninstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JimLynchCodes/n-letter-wordle-cli.git"
+  },
+  "keywords": ["worlde","cli","rust","game","games"],
+  "author": "JimLynchCodes jim.lynch@evaluates2.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JimLynchCodes/n-letter-wordle-cli/issues"
+  },
+  "homepage": "https://github.com/JimLynchCodes/n-letter-wordle-cli",
+  "files": [
+    "pre-install.js",
+    "start.js",
+    "uninstall.js",
+    "README.md",
+    "LICENSE"
+  ]
+}
+    
