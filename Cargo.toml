@@ -1,0 +1,28 @@
+[package]
+name = "n-letter-wordle"
+version = "0.1.0"
+edition = "2021"
+description = "A wordle clone, played in the command line, with words of any length."
+repository = "https://github.com/JimLynchCodes/n-letter-wordle-cli"
+readme = "README.md"
+keywords = ["worlde", "cli", "rust", "game", "games"]
+categories = ["worlde", "cli", "rust", "game", "games"]
+license = "MIT"
+homepage = "https://github.com/JimLynchCodes/n-letter-wordle-cli"
+authors = ["JimLynchCodes jim.lynch@evaluates2.com"]
+
+[dependencies]
+clap = { version = "4.1.11", features = ["derive"] }
+random_word = "0.3.0"
+lingua = { version = "1.4.0", default-features = false, features = ["english", "italian", "spanish"] }
+symspell = "0.4.3"
+inquire = { version = "0.6.1", features = ["console"] }
+ispell = "0.3.1"
+indexmap = "1.9.3"
+console = "0.15.5"
+zspell = "0.3.3"
+termion = "2.0.1"
+text-style = "0.3.0"
+
+[dev-dependencies]
+
