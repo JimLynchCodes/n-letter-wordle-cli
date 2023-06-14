@@ -3,6 +3,10 @@ A wordle clone, played in the command line, with words of any length.
 
 <br/>
 
+<img src="./n-letter-wordle-demo.gif">
+
+<br/>
+
 ## Disclaimer
 We are not affiliated at all with Wordle or New York Times. This is simply a toy project for [Jim](github.com/JimLynchCodes) to practice building cli tools and coding in Rust...___
 

@@ -38,6 +38,11 @@ use zspell::{DictBuilder, Dictionary};
 fn main() -> Result<(), Box<dyn Error>> {
     let args = read_args();
 
+    if args.version {
+        println!("{}", option_env!("CARGO_PKG_VERSION").unwrap());
+        return Ok(());
+    }
+
     print_initial_message();
 
     let secret_word = generate_random_word(args.letters_in_word)?;
