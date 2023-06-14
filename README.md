@@ -3,7 +3,7 @@ A wordle clone, played in the command line, with words of any length.
 
 <br/>
 
-<img src="./n-letter-wordle-demo.gif">
+<img src="./n-letter-wordle-short-demo.gif">
 
 <br/>
 
