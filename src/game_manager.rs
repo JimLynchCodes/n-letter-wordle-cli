@@ -36,16 +36,16 @@ pub fn prompt_for_guess(
     )
     .unwrap();
 
+    let scored_guess_str = build_colored_guess_string(scored_letters).unwrap();
+    scored_guesses.push(format!("Guess #{guesses_already_made}) {scored_guess_str}"));
+
+    print_prev_scored_guesses(&scored_guesses);
+
     if guessed_correctly {
         print_you_win(guesses_already_made, &secret_word);
     } else if remaining_guesses == 1 {
-        print_you_lose(&scored_guesses, &secret_word);
+        print_you_lose(&secret_word);
     } else {
-        let scored_guess_str = build_colored_guess_string(scored_letters).unwrap();
-        scored_guesses.push(format!("Guess #{guesses_already_made}) {scored_guess_str}"));
-
-        print_prev_scored_guesses(&scored_guesses);
-
         prompt_for_guess(
             remaining_guesses - 1,
             secret_word,

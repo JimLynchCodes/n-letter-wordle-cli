@@ -46,8 +46,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let aff_content =
         std::fs::read_to_string("data/english-dictionary.aff").expect("failed to load config file");
-    let dic_content =
-        std::fs::read_to_string("data/english-dictionary.dic").expect("failed to load wordlist file");
+    let dic_content = std::fs::read_to_string("data/english-dictionary.dic")
+        .expect("failed to load wordlist file");
 
     // Use the builder pattern to create our `Dictionary` object
     let dict: Dictionary = DictBuilder::new()
@@ -64,7 +64,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         1,
         Vec::new(),
         args.debug,
-        dict
+        dict,
     );
 
     Ok(())

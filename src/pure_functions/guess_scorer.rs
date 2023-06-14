@@ -24,6 +24,8 @@ pub fn score_guess(
         let guess_char = guess.chars().nth(i.into()).unwrap();
         let secret_char = secret_word.chars().nth(i.into()).unwrap();
 
+        let existing_guess_state = prev_letters_guessed.get(&guess_char.to_string()).unwrap();
+
         // if debug_mode {
         //     print!("\nComparing char {i} of guess {guess_char} to {secret_char}");
         // }
@@ -48,19 +50,26 @@ pub fn score_guess(
             if debug_mode {
                 // print!(", yellow");
             }
-            prev_letters_guessed
-                .insert(guess_char.to_string(), GuessState::InWordUnknownLocation)
-                .unwrap();
 
-            scored_letters.push((guess_char.to_string(), GuessState::InWordUnknownLocation))
+            scored_letters.push((guess_char.to_string(), GuessState::InWordUnknownLocation));
+
+            match existing_guess_state {
+                GuessState::InWordFoundLocation(_) => (),
+                _ => {
+                    prev_letters_guessed
+                        .insert(guess_char.to_string(), GuessState::InWordUnknownLocation)
+                        .unwrap();
+                }
+            };
         } else {
             if debug_mode {
                 // print!(", black");
             }
+            scored_letters.push((guess_char.to_string(), GuessState::GuessedNotInWord));
+
             prev_letters_guessed
                 .insert(guess_char.to_string(), GuessState::GuessedNotInWord)
                 .unwrap();
-            scored_letters.push((guess_char.to_string(), GuessState::GuessedNotInWord))
         }
     }
 

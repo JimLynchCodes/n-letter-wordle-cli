@@ -15,7 +15,6 @@ pub fn get_guess_from_user(
     secret_word: String,
     prev_letters_guessed: &IndexMap<String, GuessState>,
 ) -> Result<String, Box<dyn Error>> {
-    
     let styled_letters_remaining = prev_letters_guessed
         .iter()
         .map(|(key, guessed_state)| get_colored_keyboard_letters(key, guessed_state))

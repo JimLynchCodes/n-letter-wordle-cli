@@ -30,11 +30,11 @@ pub fn print_you_win(guesses: u8, secret_word: &str) {
     sleep_for_cool_ux();
 }
 
-pub fn print_you_lose(scored_guesses: &Vec<String>, secret_word: &str) {
-    println!("\nYou ran out of guesses! Better luck next time.\n");
+pub fn print_you_lose(secret_word: &str) {
+    println!("\nYou ran out of guesses! Better luck next time.");
     sleep_for_cool_ux();
 
-    print_prev_scored_guesses(scored_guesses);
+    // print_prev_scored_guesses(scored_guesses);
 
     println!("\nThe word I was thinking of was: {}\n", secret_word);
     sleep_for_cool_ux();
