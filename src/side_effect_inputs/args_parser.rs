@@ -12,11 +12,11 @@ pub struct Cli {
     #[arg(short, long, default_value_t = 6)]
     pub guesses: u8,
 
-    ///  Prints extra debug information.
+    ///  Print extra debug information.
     #[arg(short, long, default_value_t = false)]
     pub debug: bool,
 
-    ///  Displays the currently installed version.
+    ///  Display the currently installed version.
     #[arg(short, long)]
     pub version: bool, 
 }
