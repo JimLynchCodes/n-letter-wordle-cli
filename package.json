@@ -1,6 +1,6 @@
 {
   "name": "n-letter-wordle",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A wordle clone, played in the command line, with words of any length.",
   "main": "start.js",
   "directories": {
