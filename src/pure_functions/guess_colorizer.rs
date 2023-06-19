@@ -45,7 +45,6 @@ pub fn build_colored_guess_string(
         .join(""))
 }
 
-//
 #[cfg(test)]
 mod build_colored_guess_tests {
     use std::error::Error;

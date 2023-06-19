@@ -20,6 +20,7 @@ use side_effect_inputs::args_parser::read_args;
 mod side_effect_lib_wrappers {
     pub(super) mod english_word_validator;
     pub(super) mod random_word_generator;
+    pub(super) mod get_part_of_speech_and_definition;
 }
 
 use side_effect_lib_wrappers::random_word_generator::generate_random_word;
