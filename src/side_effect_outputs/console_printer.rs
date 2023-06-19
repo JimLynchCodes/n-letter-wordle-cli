@@ -1,7 +1,7 @@
+use serde_json::Value;
 use std::error::Error;
 use std::thread::sleep;
 use std::time::Duration;
-use serde_json::Value;
 
 use crate::side_effect_lib_wrappers::get_part_of_speech_and_definition::get_part_of_speech_and_definition;
 
@@ -32,7 +32,7 @@ pub fn print_you_win(guesses: u8, secret_word: &str) -> Result<(), Box<dyn Error
     println!("\nYou got it!! The word was \"{}\"", secret_word);
     sleep_for_cool_ux();
     print_definitions(secret_word)?;
-    println!("\nYou won in {guesses} guesses!\n");
+    println!("You won in {guesses} guesses!\n");
     Ok(())
 }
 
@@ -46,27 +46,42 @@ pub fn print_you_lose(secret_word: &str) -> Result<(), Box<dyn Error>> {
 }
 
 pub fn print_definitions(secret_word: &str) -> Result<(), Box<dyn Error>> {
-    // println!("\nYou ran out of guesses! Better luck next time.");
-    // sleep_for_cool_ux();
-    // print_definitions(secret_word);
-    // sleep_for_cool_ux();
     println!("\nDefinitions for {}:\n", secret_word);
-    // sleep_for_cool_ux();
 
-    let meanings = get_part_of_speech_and_definition(secret_word)?;
+    let (meanings, success_getting_meanings) = get_part_of_speech_and_definition(secret_word)?;
 
-    let meanings_arr: &Vec<Value> = meanings.as_array().unwrap();
+    if success_getting_meanings {
+        let meanings_arr: &Vec<Value> = meanings.as_array().unwrap();
 
-    for (index, meaning) in meanings_arr.iter().enumerate() {
+        for (index, meaning) in meanings_arr.iter().enumerate() {
+            println!(
+                "{}) {} - {}\n",
+                index + 1,
+                meaning
+                    .get("partOfSpeech")
+                    .unwrap()
+                    .as_str()
+                    .unwrap()
+                    .trim_matches('"'),
+                meaning.get("definitions").unwrap()[0]
+                    .get("definition")
+                    .unwrap()
+                    .as_str()
+                    .unwrap()
+                    .trim_matches('"')
+            );
+            sleep_for_cool_ux();
+        }
+    } else {
         println!(
-            "{}) {}, {}\n",
-            index + 1,
-            meaning.get("partOfSpeech").unwrap(),
-            meaning.get("definitions").unwrap()[0]
-                .get("definition")
+            "{}\n",
+            meanings
+                .get("message")
                 .unwrap()
+                .as_str()
+                .unwrap()
+                .trim_matches('"')
         );
-        sleep_for_cool_ux();
     }
 
     Ok(())
