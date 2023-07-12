@@ -19,8 +19,8 @@ use side_effect_inputs::args_parser::read_args;
 
 mod side_effect_lib_wrappers {
     pub(super) mod english_word_validator;
-    pub(super) mod random_word_generator;
     pub(super) mod get_part_of_speech_and_definition;
+    pub(super) mod random_word_generator;
 }
 
 use side_effect_lib_wrappers::random_word_generator::generate_random_word;
@@ -43,11 +43,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         println!("{}", option_env!("CARGO_PKG_VERSION").unwrap());
         return Ok(());
     }
-    
+
     print_initial_message();
-    
+
     let secret_word = generate_random_word(args.letters_in_word)?;
-    
+
     if args.debug {
         println!("\nDEBUG MODE: the secret word is: {}", secret_word);
     }
@@ -75,7 +75,5 @@ fn main() -> Result<(), Box<dyn Error>> {
         Vec::new(),
         args.debug,
         dict,
-    );
-
-    Ok(())
+    )
 }

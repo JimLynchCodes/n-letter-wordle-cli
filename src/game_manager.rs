@@ -1,3 +1,5 @@
+use std::error::Error;
+
 use indexmap::IndexMap;
 use zspell::Dictionary;
 
@@ -19,7 +21,7 @@ pub fn prompt_for_guess(
     mut scored_guesses: Vec<String>,
     debug_mode: bool,
     dict: Dictionary,
-) {
+) -> Result<(), Box<dyn Error>> {
     inquire::set_global_render_config(build_text_input_render_config());
 
     print_guesses_left(remaining_guesses);
@@ -42,9 +44,9 @@ pub fn prompt_for_guess(
     print_prev_scored_guesses(&scored_guesses);
 
     if guessed_correctly {
-        print_you_win(guesses_already_made, &secret_word);
+        print_you_win(guesses_already_made, &secret_word)?;
     } else if remaining_guesses == 1 {
-        print_you_lose(&secret_word);
+        print_you_lose(&secret_word)?;
     } else {
         prompt_for_guess(
             remaining_guesses - 1,
@@ -55,6 +57,8 @@ pub fn prompt_for_guess(
             scored_guesses,
             debug_mode,
             dict,
-        );
+        )?;
     }
+
+    Ok(())
 }
