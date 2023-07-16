@@ -1,5 +1,5 @@
 # N Letter Wordle Game
-A wordle clone, played in the command line, with words of any length. Also, it gives you the definition of the word when the game is over. 👍
+A wordle clone, played in the command line, with words of any length. Also, this version gives you the definitions of the word when the game is over. 👌
 
 <br/>
 
