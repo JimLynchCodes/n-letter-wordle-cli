@@ -49,7 +49,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let secret_word = generate_random_word(args.letters_in_word)?;
 
     if args.debug {
-        println!("\nDEBUG MODE: the secret word is: {}", secret_word);
+        println!("\n*** DEBUG MODE *** The secret word is: {}", secret_word);
     }
 
     print_im_thinking_of_a_word(args.letters_in_word);
