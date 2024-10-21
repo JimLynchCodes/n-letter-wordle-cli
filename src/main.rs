@@ -66,6 +66,15 @@ fn main() -> Result<(), Box<dyn Error>> {
         .build()
         .expect("failed to build dictionary!");
 
+    let secret_word = generate_random_word(args.letters_in_word)?;
+
+    if args.debug {
+        println!("\nDEBUG MODE: the secret word is: {}", secret_word);
+    }
+
+    print_im_thinking_of_a_word(args.letters_in_word);
+
+
     prompt_for_guess(
         args.guesses,
         secret_word,
