@@ -52,6 +52,12 @@ cargo fmt
 cargo clippy
 ```
 
+## Production build
+Build with the release flag:
+```
+cargo build --release
+```
+
 ## Deploy
 
 First, login to cargo and npm
